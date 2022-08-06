@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            // foreign id will be used to connect user and blog db tables
+            // when user is deleted, all his posts will be deleted as well
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->longText('text');
             $table->string('author');

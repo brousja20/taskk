@@ -7,9 +7,23 @@
     <title>task</title>
 </head>
 <body>
-    <a href="#">register</a>
-    <a href="#">login</a>
-    <a href="/blogs/create">Add Post</a>
+    @auth
+    <span>logged as <strong>{{auth()->user()->name}}</strong></span>
+    <a href="/blogs/manage">my blogs</a>
+    <form action="/logout" method="post">
+        @csrf
+        <button type="submit" style="background-color: red;">
+            logout
+        </button>
+    </form>
+
+    @else
+    <a href="/register">register</a>
+    <a href="/login">login</a>
+    @endauth
+
+    <a href="/blogs/create">Add blog</a>
+
     @yield('content')
 </body>
 </html>

@@ -14,7 +14,17 @@
             <a href="/blogs/{{$blog['id']}}">{{$blog['name']}}</a>
         </h2>
         <p>
-            <a href=""></a> {{$blog['author']}}
+            {{-- click to view blogs only from this author --}}
+            <span> Author:
+                <a href="/?author={{$blog['author']}}">{{$blog['author']}}</a>
+            </span>
+
+            {{-- click to view blogs only from this user --}}
+            <span style="margin-left: 10px"> Posted by user:
+                <a href="/?user_id={{$blog['user_id']}}">{{$blog['user_id']}}</a>
+            </span>
+
+            <span style="margin-left: 10px">Published: {{$blog['created_at']}}</span>
         </p>
     </div>
 @endforeach
