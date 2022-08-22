@@ -2,7 +2,9 @@
 
 @section('content')
 
-<h1>manage my blogs</h1>
+{{-- <h1>manage my blogs</h1> --}}
+
+<div id="root"></div>
 
 @if (count($blogs) == 0)
     <p>No Blogs Found</p>
