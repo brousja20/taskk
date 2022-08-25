@@ -20,7 +20,7 @@ class Blog extends Model
         // }
     }
 
-    protected $fillable = ['name', 'text', 'author', 'user_id'];
+    // protected $fillable = ['name', 'text', 'author', 'user_id'];
 
     // relationship to user
     public function user() {
