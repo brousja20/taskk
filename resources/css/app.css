@@ -61,10 +61,6 @@ body {
   cursor: pointer;
 }
 
-.blog.reminder {
-  border-left: 5px solid green;
-}
-
 .blog h3 {
   display: flex;
   align-items: center;
