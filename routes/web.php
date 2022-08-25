@@ -52,6 +52,9 @@ Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->middleware('
 // manage blogs
 Route::get('/blogs/manage', [BlogController::class, 'manage'])->middleware('auth');
 
+// professional problem solver api
+Route::get('/blogs/managejson', [BlogController::class, 'rtrnAll'])->middleware('auth');
+
 // single blog
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->middleware('auth');
 

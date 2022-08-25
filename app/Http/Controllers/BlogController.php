@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -79,6 +81,17 @@ class BlogController extends Controller
     //manage blogs
     public function manage(){
         return view('blogs.manage', ['blogs' => auth()->user()->blogs()->get()]);
+        // return view('blogs.manage', ['blogs' => User::find(Auth::id())->user()->blogs()->get()]);
+
+    }
+
+    //api route for react json
+    public function rtrnAll(){
+        $id = Auth::id();
+        $user = User::find(intval($id));
+        $allpost = $user->blogs()->get();
+
+        return $allpost;
     }
 
 }

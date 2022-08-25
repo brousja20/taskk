@@ -1,40 +1,57 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './Header'
 import Blogs from './Blogs'
 
 const App = () => {
     const [blogs, setBlogs] = useState([
-        {
-            id: 1,
-            text: 'asd',
-            day: 'mon',
-            reminder: false,
-        },
-        {
-            id: 2,
-            text: 'xyz',
-            day: 'tuesday',
-            reminder: true,
-        },
-        {
-            id: 3,
-            text: 'jkl',
-            day: 'wednesday',
-            reminder: false,
-        },
+        // {
+        //     id: 1,
+        //     text: 'asd',
+        //     day: 'mon',
+        //     reminder: false,
+        // },
+        // {
+        //     id: 2,
+        //     text: 'xyz',
+        //     day: 'tuesday',
+        //     reminder: true,
+        // },
+        // {
+        //     id: 3,
+        //     text: 'jkl',
+        //     day: 'wednesday',
+        //     reminder: false,
+        // },
       ])
+
+    useEffect(() => {
+        const getBlogs = async () => {
+            const blogsFromServer = await fetchBlogs()
+            setBlogs(blogsFromServer)
+        }
+
+        getBlogs()
+    }, [])
+
+    // fetch blogs
+    const fetchBlogs = async () => {
+        const res = await fetch('http://127.0.0.1:8000/blogs/managejson')
+        const data = await res.json()
+
+        return data
+    }
 
     // delete blog
     const deleteBlog = (id) => {
-        console.log('delete', id)
+        setBlogs(blogs.filter((blog) => blog.id !== id))
     }
 
     return (
         <div className='
         container'>
             <Header />
-            <Blogs blogs={blogs} onDelete={deleteBlog} />
+            {blogs.length > 0 ? <Blogs blogs={blogs} onDelete={deleteBlog} /> : 'No blogs found.'}
         </div>
     )
 }
