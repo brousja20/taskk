@@ -4,26 +4,7 @@ import Header from './Header'
 import Blogs from './Blogs'
 
 const App = () => {
-    const [blogs, setBlogs] = useState([
-        // {
-        //     id: 1,
-        //     text: 'asd',
-        //     day: 'mon',
-        //     reminder: false,
-        // },
-        // {
-        //     id: 2,
-        //     text: 'xyz',
-        //     day: 'tuesday',
-        //     reminder: true,
-        // },
-        // {
-        //     id: 3,
-        //     text: 'jkl',
-        //     day: 'wednesday',
-        //     reminder: false,
-        // },
-      ])
+    const [blogs, setBlogs] = useState([])
 
     useEffect(() => {
         const getBlogs = async () => {
