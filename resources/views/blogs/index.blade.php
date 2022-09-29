@@ -24,7 +24,8 @@
                 <a href="/?user_id={{$blog['user_id']}}">{{$blog['user_id']}}</a>
             </span>
 
-            <span style="margin-left: 10px">Published: {{$blog['created_at']}}</span>
+            <span style="margin-left: 10px">Published: {{$blog['created_at']->diffForHumans()}}</span>
+
         </p>
     </div>
 @endforeach

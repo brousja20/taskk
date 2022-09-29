@@ -13,7 +13,7 @@
     @auth
     <span>logged as <strong>{{auth()->user()->name}}</strong></span>
     <a href="/blogs/manage">my blogs</a>
-    <form action="/logout" method="post">
+    <form style="display: inline" action="/logout" method="post">
         @csrf
         <button type="submit" style="background-color: red;">
             logout
