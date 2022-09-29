@@ -1,35 +1,14 @@
 <?php
 
-use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
+
+use App\Models\Blog;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-/*
-INFO
-dodělal jsem věci co jsem nestihl, zapomněl jsem to postupně commitovat takže to pushnu všechno najednou
-
-added filter by author,
-option to update your blog,
-user registration + login + logout,
-navbar changes when user is logged,
-relations between user and blogs(foreign key),
-user can't see homepage if he isn't logged and is redirected to login page,
-user can't edit others blogs(can access edit page through url, but changes wont save)
-
-*/
 
 // All blogs
 Route::get('/', [BlogController::class, 'index'])->middleware('auth');
@@ -52,12 +31,19 @@ Route::delete('/blogs/{blog}', [BlogController::class, 'destroy'])->middleware('
 // manage blogs
 Route::get('/blogs/manage', [BlogController::class, 'manage'])->middleware('auth');
 
-// professional problem solver api
+// temporary professional problem solver api
 Route::get('/blogs/managejson', [BlogController::class, 'rtrnAll'])->middleware('auth');
 
 // single blog
 Route::get('/blogs/{blog}', [BlogController::class, 'show'])->middleware('auth');
 
+// ================== comments ======================
+
+// store comments
+Route::post('/blogs/{blog}/comments', [CommentsController::class, 'store']);
+
+// delete comments
+Route::delete('/comments/{comment}', [CommentsController::class, 'destroy']);
 
 // =================== users =======================
 
@@ -75,3 +61,14 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // login user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+// ===== admin ======
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+  Route::resource('roles', RoleController::class);
+  Route::resource('users', UserController::class);
+  Route::resource('blogs', BlogController::class);
+});
