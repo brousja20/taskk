@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- only owner of current blog can edit or delete --}}
+{{-- only owner of current blog can see edit or delete option --}}
 @if ($blog->user_id == auth()->id())
     {{-- link to update form --}}
     <a href="/blogs/{{$blog->id}}/edit">edit blog</a>
@@ -17,18 +17,21 @@
 @endif
 
 {{-- html for single blog --}}
-<h2>
-    Name: {{$blog['name']}}
-</h2>
-<h4>
-    By: {{$blog['author']}}
-</h4>
+<div class="">
+
+</div>
 <p> posted:
     {{$blog['created_at']}}
 </p>
 <p> last edited:
     {{$blog['updated_at']}}
 </p>
+<h2>
+    Name: {{$blog['name']}}
+</h2>
+<h4>
+    By: {{$blog['author']}}
+</h4>
 <p>
     Description: {{$blog['text']}}
 </p>
