@@ -20,9 +20,9 @@
             </span>
 
             {{-- click to view blogs only from this user --}}
-            <span style="margin-left: 10px"> Posted by user:
+            {{-- <span style="margin-left: 10px"> Posted by user:
                 <a href="/?user_id={{$blog['user_id']}}">{{$blog['user_id']}}</a>
-            </span>
+            </span> --}}
 
             <span style="margin-left: 10px">Published: {{$blog['created_at']->diffForHumans()}}</span>
 
@@ -32,6 +32,7 @@
 
 <div style="margin-top: 6px;">
     {{$blogs->links()}}
+    {{-- load more blogs with ajax instead of pagination --}}
 </div>
     
 @endsection
