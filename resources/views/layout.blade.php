@@ -1,25 +1,3 @@
-{{-- <body>
-    @auth
-    <span>logged as <strong>{{auth()->user()->name}}</strong></span>
-    <a href="/blogs/manage">my blogs</a>
-    <form style="display: inline" action="/logout" method="post">
-        @csrf
-        <button type="submit" style="background-color: red;">
-            logout
-        </button>
-    </form>
-
-    @else
-    <a href="/register">register</a>
-    <a href="/login">login</a>
-    @endauth
-
-    <a href="/blogs/create">Add blog</a>
-
-    @yield('content')
-</body>
-</html> --}}
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -56,19 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        {{-- @auth
-                        <span>logged as <strong>{{auth()->user()->name}}</strong></span>
-                        <form style="display: inline" action="/logout" method="post">
-                            @csrf
-                            <button type="submit" style="background-color: red;">
-                                logout
-                            </button>
-                        </form>
 
-                        @else
-                        <a href="/register">register</a>
-                        <a href="/login">login</a>
-                        @endauth --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
