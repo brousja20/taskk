@@ -17,9 +17,6 @@
 @endif
 
 {{-- html for single blog --}}
-<div class="">
-
-</div>
 <p> posted:
     {{$blog['created_at']}}
 </p>
