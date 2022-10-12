@@ -63,4 +63,10 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // ===== admin ======
+Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
+  //
+  //
+});
 Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

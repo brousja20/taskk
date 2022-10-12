@@ -3,7 +3,7 @@
 @section('content')
 
 {{-- only owner of current blog can see edit or delete option --}}
-@if ($blog->user_id == auth()->id())
+@if ($blog->user_id == auth()->id() || Auth::user()->role == '1')
     {{-- link to update form --}}
     <a href="/blogs/{{$blog->id}}/edit">edit blog</a>
     

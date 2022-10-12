@@ -54,31 +54,33 @@ class BlogController extends Controller
 
     // update blog data
     public function update(Request $request, Blog $blog) {
-        // check if logged user is owner (or admin(not added yet))
-        if ($blog->user_id != auth()->id()) {
+        // check if logged user is owner or admin
+        if ($blog->user_id == auth()->id() or Auth::user()->role == '1') {
+
+            $formFields = $request->validate([
+                'name' => 'required',
+                'text' => 'required',
+                'author' => 'required'
+            ]);
+    
+            $blog->update($formFields);
+            
+            return back();
+
+        } else {
             abort(403, 'you are not authorized for this action');
         }
-
-        $formFields = $request->validate([
-            'name' => 'required',
-            'text' => 'required',
-            'author' => 'required'
-        ]);
-
-        $blog->update($formFields);
-        
-        return back();
     }
 
     //delete blog
     public function destroy(Blog $blog) {
-        // check if logged user is owner (or admin(not added yet))
-        if ($blog->user_id != auth()->id()) {
+        // check if logged user is owner or admin
+        if ($blog->user_id == auth()->id() || Auth::user()->role == '1') {
+            $blog->delete();
+            return redirect('/');
+        } else {
             abort(403, 'you are not authorized for this action');
         }
-        
-        $blog->delete();
-        return redirect('/');
     }
 
     //manage blogs
