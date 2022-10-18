@@ -14,10 +14,6 @@ class Blog extends Model
         if ($filters['author'] ?? false) {
             $query->where('author', 'like', '%' . request('author') . '%');
         }
-
-        // if ($filters['user_id'] ?? false) {
-        //     $query->where('user_id', 'like', '%' . request('user_id') . '%');
-        // }
     }
 
     // protected $fillable = ['name', 'text', 'author', 'user_id'];
@@ -27,6 +23,7 @@ class Blog extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    // relationship to comments
     public function comments() {
         return $this->hasMany(Comment::class)->whereNull('parent_id');
     }

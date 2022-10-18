@@ -6,6 +6,7 @@ import Blogs from './Blogs'
 const App = () => {
     const [blogs, setBlogs] = useState([])
 
+    // get blogs from sql db
     useEffect(() => {
         const getBlogs = async () => {
             const blogsFromServer = await fetchBlogs()

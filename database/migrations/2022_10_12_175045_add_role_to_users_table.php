@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
+        // creates db column for admin role
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role')->default('0'); //admin
+            $table->integer('role')->default('0'); // 0 = user
         });
     }
 

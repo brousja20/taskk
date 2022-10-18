@@ -18,6 +18,7 @@ return new class extends Migration
             // foreign id will be used to connect blog and comments db tables
             // when user is deleted, all his comments will be deleted as well
             // $table->foreignId('blog_id')->constrained()->onDelete('cascade');
+            
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('blog_id');
             $table->unsignedBigInteger('parent_id')->nullable();

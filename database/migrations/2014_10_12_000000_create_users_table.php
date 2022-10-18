@@ -21,17 +21,6 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-
-            // $table->id();
-            // $table->string('name');
-            // $table->string('surname')->default("a");
-            // $table->string('username')->default("");
-            // $table->integer('isadmin')->default(0);
-            // $table->string('email')->unique();
-            // $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
-            // $table->rememberToken();
-            // $table->timestamps();
         });
     }
 

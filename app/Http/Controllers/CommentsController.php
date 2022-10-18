@@ -10,6 +10,7 @@ use App\Http\Requests\CommentsRequest;
 
 class CommentsController extends Controller
 {
+    // store comment
     public function store(Blog $blog, CommentsRequest $request) {
         $data = $request->validated();
         $comment = new Comment();
@@ -26,6 +27,7 @@ class CommentsController extends Controller
         return back();
     }
 
+    // delete comment
     public function destroy(Comment $comment)
     {
         if (count(DB::table('comments')->where('parent_id', $comment->id)->get()) > 0)
