@@ -31,7 +31,7 @@ const App = () => {
 
     return (
         <div className='
-        container'>
+        contain'>
             <Header />
             {blogs.length > 0 ? <Blogs blogs={blogs} onDelete={deleteBlog} /> : 'No blogs found.'}
         </div>
